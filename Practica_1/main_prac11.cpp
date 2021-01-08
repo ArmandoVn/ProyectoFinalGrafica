@@ -449,50 +449,56 @@ int main()
 		/*------------------ RECAMARA PADRES ----------------------*/
 		// PARED CAMA PAPAS
 		model = glm::mat4(1.0f);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 25.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 25.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 		// PARED FRONTAL CAMA PAPAS
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-35.0f, 25.0f, 162.0f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-35.0f, 25.0f, 162.0f));
 		model = glm::scale(model, glm::vec3(0.07f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 		// PARED VENTANA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-113.5f, 25.0f, -40.0f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-113.5f, 25.0f, -40.0f));
 		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.09f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 		// PARED PATIO
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(45.0f, 25.0f, -46.0f));
-		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.07f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(45.0f, 25.0f, -41.7f));
+		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.03f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 		// PISO DE MADERA
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-70.0f, 0.1f, 30.0f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 30.0f));
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 60.0f));
 		staticShader.setMat4("model", model);
-		//floor_house.Draw(staticShader);
+		floor_house.Draw(staticShader);
 		/*------------------ FIN RECAMARA PADRES ----------------------*/
 
 
 
 		/*----------------------- CLOSET ----------------------*/
 		// PARED VENTANA
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-119.5f, 25.0f, -158.0f));
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 		// PARED BAÑO
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-119.5f, 25.0f, -128.0f));
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -500,58 +506,48 @@ int main()
 		/*------------------ FIN CLOSET ----------------------*/
 
 
-
 		/*----------------------- BAÑO ----------------------*/
 		// PARED PASILLO
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-119.5f, 25.0f, -33.0f));
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 		/*------------------ FIN BAÑO ----------------------*/
 
-
-
-		/*----------------- CUARTO MALCOM --------------------*/
-		// PARED FRONTAL CAMAS
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-35.0f, 25.0f, 232.5f));
-		model = glm::scale(model, glm::vec3(0.053f, 0.06f, 0.09f));
+		/*------------------ RECAMARA JAIME ----------------------*/
+		// PARED JAMIE ESTE
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(95.4f, 25.0f, -42.3f));
+		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.05f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
-
-		// PARED VENTANA
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-190.0f, 25.0f, -115.0f));
-		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.09f));
+		//PARED JAMIE NORTE
+		
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(51.3f, 25.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.028f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+		//PARED JAMIE SUR
 
-		// PARED CAMAS
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-35.0f, 25.0f, 391.0f));
-		model = glm::scale(model, glm::vec3(0.07f, 0.06f, 0.09f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(51.4f, 25.0f, 89.0f));
+		model = glm::scale(model, glm::vec3(0.0281f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
-
-		// PARED PASILLO
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-221.0f, 25.0f, -33.5f));
-		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
+		// PARED JAMIE OESTE PEQUEÑA
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(2.0f, 25.0f, 31.5f));
+		model = glm::scale(model, glm::vec3(0.00001f, 0.06f, 0.008f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
-		/*----------------- FIN MALCOM --------------------*/
-
-
-		/*----------------- PASILLO --------------------*/
-		// PARED PATIO
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-110.0f, 25.0f, 1.5f));
-		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
-		staticShader.setMat4("model", model);
-		pared.Draw(staticShader);
-		/*----------------- FIN PASILLO --------------------*/
 
 
 		// -------------------------------------------------------------------------------------------------------------------------

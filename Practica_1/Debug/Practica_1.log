@@ -1,12 +1,28 @@
-﻿  main_prac11.cpp
-d:\2021-1\lab. grafica\practica_1\practica_1\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
-d:\2021-1\lab. grafica\practica_1\practica_1\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(669): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(670): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(674): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(675): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(677): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(678): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(686): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-  Practica_1.vcxproj -> D:\2021-1\Lab. Grafica\Practica_1\Debug\Practica_1.exe
+﻿  glad.c
+  main_prac11.cpp
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(665): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(666): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(670): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(671): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(673): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(674): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\cloudco\documents\soft\log\lab compu gráfica\proyectofinalgrafica\practica_1\main_prac11.cpp(682): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(context.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(init.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(vulkan.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(vulkan.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(window.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_init.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_joystick.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_monitor.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_time.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_time.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_thread.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_thread.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_window.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(wgl_context.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(egl_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(egl_context.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(osmesa_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(osmesa_context.obj)' o en 'C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+  Practica_1.vcxproj -> C:\Users\CloudCo\Documents\Soft\Log\Lab Compu Gráfica\ProyectoFinalGrafica\Debug\Practica_1.exe
