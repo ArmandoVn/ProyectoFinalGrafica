@@ -554,6 +554,30 @@ int main()
 		/*----------------- FIN PASILLO --------------------*/
 
 
+		/*----------------- CUARTO MALCOM --------------------*/
+		// PARED VENTANA
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-350.0f, 25.0f, -115.0f));
+		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.09f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED CAMAS
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-18.0f, 25.0f, 551.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.06f, 0.09f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED PASILLO
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-381.0f, 25.0f, -16.0f));
+		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+		/*----------------- FIN MALCOM --------------------*/
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------

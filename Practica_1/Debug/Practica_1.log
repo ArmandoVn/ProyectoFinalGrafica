@@ -2,11 +2,11 @@
 d:\2021-1\lab. grafica\practica_1\practica_1\include\shader_m.h(44): warning C4101: 'e': variable local sin referencia
 d:\2021-1\lab. grafica\practica_1\practica_1\include\modelanim.h(104): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 d:\2021-1\lab. grafica\practica_1\practica_1\include\modelanim.h(520): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(669): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(670): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(674): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(675): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(677): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(678): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(686): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(693): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(694): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(698): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(699): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(701): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(702): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+d:\2021-1\lab. grafica\practica_1\practica_1\main_prac11.cpp(710): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   Practica_1.vcxproj -> D:\2021-1\Lab. Grafica\Practica_1\Debug\Practica_1.exe
