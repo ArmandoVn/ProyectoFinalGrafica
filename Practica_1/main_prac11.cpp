@@ -439,9 +439,14 @@ int main()
 	
 
 		// ARBOLES
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 15.5f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 700.0f));
+		tmp = model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		arbol_cafe.Draw(staticShader);
+
+
+		// ARBOLES
+		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -100.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
@@ -557,10 +562,18 @@ int main()
 
 
 		/*----------------- PASILLO --------------------*/
-		// PARED PATIO
+		// PARED PATIO 1
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-110.0f, 25.0f, 1.5f));
-		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
+		model = glm::translate(model, glm::vec3(-46.5f, 25.0f, 1.5f));
+		model = glm::scale(model, glm::vec3(0.05f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED PATIO 2
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-134.0f, 25.0f, 1.5f));
+		model = glm::scale(model, glm::vec3(0.055f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 		/*----------------- FIN PASILLO --------------------*/
@@ -636,7 +649,7 @@ int main()
 		/*----------------- COCINA/COMEDOR--------------------*/
 		// PARED ENTRADA PRINCIPAL
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(110.0f, 25.0f, 420.0f));
-		model = glm::scale(model, glm::vec3(0.075f, 0.06f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
