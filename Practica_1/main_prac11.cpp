@@ -40,7 +40,7 @@ const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1200;
 
 // camera
-Camera camera(glm::vec3(0.0f, 50.0f, 100.0f));
+Camera camera(glm::vec3(0.0f, 200.0f, 100.0f));
 float MovementSpeed = 1.5f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -316,9 +316,6 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
-	Model sofa("resources/objects/Sofa/sofa.obj");
-	Model librero("resources/objects/Librero/librero.obj");
-	Model chimenea("resources/objects/Chimenea/chimenea.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -442,9 +439,14 @@ int main()
 	
 
 		// ARBOLES
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 15.5f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 700.0f));
+		tmp = model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		arbol_cafe.Draw(staticShader);
+
+
+		// ARBOLES
+		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -100.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
@@ -549,14 +551,29 @@ int main()
 		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		// PISO DE MADERA
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 256.5f));
+		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
+		staticShader.setMat4("model", model);
+		floor_house.Draw(staticShader);
 		/*----------------- FIN MALCOM --------------------*/
 
 
 		/*----------------- PASILLO --------------------*/
-		// PARED PATIO
+		// PARED PATIO 1
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-110.0f, 25.0f, 1.5f));
-		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
+		model = glm::translate(model, glm::vec3(-46.5f, 25.0f, 1.5f));
+		model = glm::scale(model, glm::vec3(0.05f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED PATIO 2
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-134.0f, 25.0f, 1.5f));
+		model = glm::scale(model, glm::vec3(0.055f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 		/*----------------- FIN PASILLO --------------------*/
@@ -596,8 +613,8 @@ int main()
 		pared.Draw(staticShader);
 
 
-		/*----------------- CUARTO MALCOM --------------------*/
-		// PARED VENTANA
+		/*----------------- CUARTO SALA --------------------*/
+		// PARED TELE
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-350.0f, 25.0f, -115.0f));
 		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.09f));
@@ -605,14 +622,14 @@ int main()
 		pared.Draw(staticShader);
 
 
-		// PARED CAMAS
+		// PARED VENTANA
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-18.0f, 25.0f, 551.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
 
-		// PARED PASILLO
+		// PARED COCINA/COMEDOR
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-381.0f, 25.0f, -16.0f));
 		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
@@ -620,29 +637,79 @@ int main()
 		pared.Draw(staticShader);
 
 
-		//Sofa
+		// PISO DE MADERA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 450.5f));
+		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
-		sofa.Draw(staticShader);
+		floor_house.Draw(staticShader);
+		/*----------------- FIN SALA --------------------*/
 
-		//Librero
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
-		staticShader.setMat4("model", model);
-		librero.Draw(staticShader);
 
-		//Chimenea
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 200.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		/*----------------- COCINA/COMEDOR--------------------*/
+		// PARED ENTRADA PRINCIPAL
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(110.0f, 25.0f, 420.0f));
+		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
-		chimenea.Draw(staticShader);
-		
-		
-		/*----------------- FIN MALCOM --------------------*/
+		pared.Draw(staticShader);
+
+
+		// PARED PATIO Y SALA/COMEDOR 1
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(170.0f, 25.0f, 198.5f));
+		model = glm::scale(model, glm::vec3(0.07f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED PATIO Y SALA/COMEDOR 2
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(272.0f, 25.0f, 198.5f));
+		model = glm::scale(model, glm::vec3(0.058f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED SALA/COMEDOR
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-340.0f, 25.0f, 112.0f));
+		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PISO DE MADERA
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(192.0f, 0.1f, 325.0f));
+		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 77.0f));
+		staticShader.setMat4("model", model);
+		floor_house.Draw(staticShader);
+		/*----------------- FIN COCINA/COMEDOR --------------------*/
+
+
+
+
+		/*----------------- SALA/COMEDOR --------------------*/
+		// PARED ENTRADA PRINCIPAL
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(270.0f, 25.0f, 453.0f));
+		model = glm::scale(model, glm::vec3(0.09f, 0.06f, 0.0f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED SALA/COMEDOR 1
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-312.5f, 25.0f, 315.5f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.06f, 0.09f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		// PARED SALA/COMEDOR 2
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-200.0f, 25.0f, 315.5f));
+		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.09f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+		/*----------------- FIN SALA/COMEDOR --------------------*/
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
