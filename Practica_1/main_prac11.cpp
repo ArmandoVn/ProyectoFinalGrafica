@@ -316,6 +316,9 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
+	Model sofa("resources/objects/Sofa/sofa.obj");
+	Model librero("resources/objects/Librero/librero.obj");
+	Model chimenea("resources/objects/Chimenea/chimenea.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -615,6 +618,30 @@ int main()
 		model = glm::scale(model, glm::vec3(0.072f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		//Sofa
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		sofa.Draw(staticShader);
+
+		//Librero
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		librero.Draw(staticShader);
+
+		//Chimenea
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 200.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		chimenea.Draw(staticShader);
+		
+		
 		/*----------------- FIN MALCOM --------------------*/
 
 		// -------------------------------------------------------------------------------------------------------------------------

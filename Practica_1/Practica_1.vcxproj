@@ -26,8 +26,6 @@
     <ClCompile Include="main_prac11.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\shader_Lights.fs" />
-    <None Include="shaders\shader_Lights.vs" />
     <None Include="shaders\skybox.fs" />
     <None Include="shaders\skybox.vs" />
   </ItemGroup>

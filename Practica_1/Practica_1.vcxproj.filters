@@ -28,12 +28,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\shader_Lights.fs">
-      <Filter>Archivos de recursos</Filter>
-    </None>
-    <None Include="shaders\shader_Lights.vs">
-      <Filter>Archivos de recursos</Filter>
-    </None>
     <None Include="shaders\skybox.fs">
       <Filter>Archivos de recursos</Filter>
     </None>
