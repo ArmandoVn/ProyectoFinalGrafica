@@ -328,12 +328,27 @@ int main()
 
 	// load models
 	// -----------
+	/*---------------- MODELOS CASA ----------------*/
 	Model floor_house("resources/objects/PisoCasa/floor_house.obj");
 	Model barda_exterior("resources/objects/BardaJardin/barda_jardin.obj");
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
 	Model charger("resources/objects/Charger/charger.obj");
+	/*---------------- MODELOS COCINA ----------------*/
+	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
+	Model alacena("resources/objects/Alacena/alacena.obj");
+	Model refri("resources/objects/Refri/refri.obj");
+	Model mesa("resources/objects/Mesa/mesa.obj");
+	Model silla("resources/objects/Silla/silla.obj");
+	/*---------------- MODELOS BAÑO ----------------*/
+	Model ducha("resources/objects/Bathroom/ducha.obj");
+	Model espejo("resources/objects/Bathroom/espejo.obj");
+	Model lavabo("resources/objects/Bathroom/lavabo.obj");
+	Model papel("resources/objects/Bathroom/papel.obj");
+	Model paperholder("resources/objects/Bathroom/paperholder.obj");
+	Model tina("resources/objects/Bathroom/tina.obj");
+	Model toilet("resources/objects/Bathroom/toilet.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -544,6 +559,50 @@ int main()
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		/*---------------- MODELOS BAÑO ---------------------*/
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-35.0f, 2.0f, 182.0f));
+		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(30.0f));
+		staticShader.setMat4("model", model);
+		toilet.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-50.0f, 20.0f, 188.0f));
+		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(20.0f));
+		staticShader.setMat4("model", model);
+		paperholder.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-50.0f,19.5f, 187.5f));
+		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.04f));
+		staticShader.setMat4("model", model);
+		papel.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-50.6f, 0.0f, 130.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f));
+		staticShader.setMat4("model", model);
+		lavabo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-147.0f, 0.0f, 159.5f));
+		model = glm::rotate(model, glm::radians(-270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		tina.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-114.0f, 30.0f, 165.0f));
+		//model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		ducha.Draw(staticShader);
+
 		/*------------------ FIN BAÑO ----------------------*/
 
 
