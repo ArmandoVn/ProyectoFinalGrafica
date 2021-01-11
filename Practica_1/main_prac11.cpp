@@ -19,6 +19,9 @@
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
 
+// Other Libs
+#include "SOIL2/SOIL2.h"
+
 #include <shader_m.h>
 #include <camera.h>
 #include <modelAnim.h>
@@ -56,6 +59,9 @@ double	deltaTime = 0.0f,
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 
+//Sound
+void sound();
+
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
@@ -82,6 +88,9 @@ float	incX = 0.0f,
 		incZ = 0.0f,
 		rotInc = 0.0f,
 		giroMonitoInc = 0.0f;
+
+// Sound
+bool soundon = true;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -138,6 +147,14 @@ void interpolation(void)
 
 }
 
+// Sound
+void sound() {
+	if (soundon) {
+		bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
+		cout << "Ambient:" << played << endl;
+		soundon = false;
+	}
+}
 
 void animate(void)
 {
@@ -316,6 +333,7 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
+	Model charger("resources/objects/Charger/charger.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -449,6 +467,13 @@ int main()
 		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -100.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
+
+
+		// Charger
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
+		staticShader.setMat4("model", model);
+		charger.Draw(staticShader);
 
 
 		/*------------------ RECAMARA PADRES ----------------------*/
@@ -729,6 +754,9 @@ int main()
 			SDL_Delay((int)(LOOP_TIME - deltaTime));
 		}
 
+		// Sound
+		sound();
+
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
@@ -776,6 +804,10 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
 		animacion ^= true;
+	
+	// Sound
+	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+		soundon = false;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
