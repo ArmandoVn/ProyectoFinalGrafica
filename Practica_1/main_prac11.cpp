@@ -19,9 +19,6 @@
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
 
-// Other Libs
-#include "SOIL2/SOIL2.h"
-
 #include <shader_m.h>
 #include <camera.h>
 #include <modelAnim.h>
