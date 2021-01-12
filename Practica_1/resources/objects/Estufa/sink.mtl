@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 10.01.2021 19:51:33
+# File Created: 11.01.2021 23:33:25
 
-newmtl Material__198
+newmtl Material__425
 	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
@@ -12,8 +12,22 @@ newmtl Material__198
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka WoodFine01.jpg
-	map_Kd WoodFine01.jpg
+	map_Ka gris.jpg
+	map_Kd gris.jpg
+
+newmtl Material__255
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka azul.jpg
+	map_Kd azul.jpg
 
 newmtl Material__253
 	Ns 10.0000
@@ -29,7 +43,7 @@ newmtl Material__253
 	map_Ka blanco.jpg
 	map_Kd blanco.jpg
 
-newmtl Material__254
+newmtl Material__424
 	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
@@ -40,19 +54,17 @@ newmtl Material__254
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka verde.jpg
-	map_Kd verde.jpg
+	map_Ka amarillopastel.jpg
+	map_Kd amarillopastel.jpg
 
-newmtl Material__255
-	Ns 10.0000
+newmtl Tube02Mat
+	Ns 43.2193
 	Ni 1.5000
 	d 1.0000
 	Tr 0.0000
 	Tf 1.0000 1.0000 1.0000 
 	illum 2
-	Ka 0.5880 0.5880 0.5880
-	Kd 0.5880 0.5880 0.5880
-	Ks 0.0000 0.0000 0.0000
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.2000 0.2000 0.2000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka azul.jpg
-	map_Kd azul.jpg
