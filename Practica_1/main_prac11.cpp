@@ -316,6 +316,23 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
+	Model librero("resources/objects/Librero/librero.obj");
+	Model chimenea("resources/objects/Chimenea/chimenea1.obj");
+	Model sofa("resources/objects/Sofa/sofa.obj");
+	Model mesa("resources/objects/Mesa/mesa.obj");
+	Model cama("resources/objects/Cama/cama.obj");
+	Model cama2("resources/objects/Cama2/cama2.obj");
+	Model mesam("resources/objects/MesaM/mesam.obj");
+	Model sillam("resources/objects/SillaM/sillam.obj");
+	Model mueblem("resources/objects/MuebleM/mueblem.obj");
+	Model porteria("resources/objects/Porteria/porteriam.obj");
+	Model mueble2("resources/objects/Porteria/mueble2.obj");
+	Model roperom("resources/objects/RoperoM/roperom.obj");
+	Model cuna("resources/objects/Cuna/cuna.obj");
+	Model banco("resources/objects/Banco/banco.obj");
+	Model balon("resources/objects/Balon/balon.obj");
+	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
+
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
@@ -558,6 +575,67 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+		////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// CAMA
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f));
+		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
+		staticShader.setMat4("model", model);
+		cama.Draw(staticShader);
+
+		// CAMA2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f));
+		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
+		staticShader.setMat4("model", model);
+		cama2.Draw(staticShader);
+
+		// MESAM
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-92.0f, 0.1f, 201.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		mesam.Draw(staticShader);
+
+
+		// SILLAM
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-92.0f, 0.1f, 218.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		sillam.Draw(staticShader);
+
+		// MUEBLEM
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-35.0f, 0.1f, 260.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		mueblem.Draw(staticShader);
+
+
+		// Mueble1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 295.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
+
+		// Mueble2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 295.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		mueble2.Draw(staticShader);
+
+		// ROPERO
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-143.0f, 0.1f, 125.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		roperom.Draw(staticShader);
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/*----------------- FIN MALCOM --------------------*/
 
 
@@ -611,6 +689,42 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// CUNA
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(45.0f, -1.0f, -28.5f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		cuna.Draw(staticShader);
+
+		// BANCO
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(14.0f, 0.0f, -24.5f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		banco.Draw(staticShader);
+
+		// BALON
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(55.0f, 0.0f, 13.5f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		balon.Draw(staticShader);
+
+		// MuebleJ
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(20.0f, 0.0f, 23.5f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		mueblej.Draw(staticShader);
+
 
 
 		/*----------------- CUARTO SALA --------------------*/
@@ -675,6 +789,45 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//Librero
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 368.5f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+		staticShader.setMat4("model", model);
+		librero.Draw(staticShader);
+
+		//Chimenea
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-147.0f, 0.6f, 430.f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+		staticShader.setMat4("model", model);
+		chimenea.Draw(staticShader);
+
+		//Sofá grande
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.6f, 410.f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+		staticShader.setMat4("model", model);
+		sofa.Draw(staticShader);
+
+		//MesaNorte
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-90.0f, 0.6f, 450.f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		staticShader.setMat4("model", model);
+		mesa.Draw(staticShader);
+
+		//MesaSur
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-90.0f, 0.6f, 398.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		staticShader.setMat4("model", model);
+		mesa.Draw(staticShader);
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+
 
 		// PISO DE MADERA
 		model = glm::mat4(1.0f);
@@ -709,6 +862,8 @@ int main()
 		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
 		/*----------------- FIN SALA/COMEDOR --------------------*/
 
 		// -------------------------------------------------------------------------------------------------------------------------
