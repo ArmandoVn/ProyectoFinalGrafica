@@ -357,7 +357,9 @@ int main()
 	
 	Model silla("resources/objects/Silla/silla.obj");
 	Model gabinete("resources/objects/Gabinetes/gabinete.obj");
-	Model estufa("resources/objects/Estufa/stove.obj");
+	Model gabinete2("resources/objects/Gabinetes/gabinete2.obj");
+	Model gabinete3("resources/objects/Gabinetes/gabinete3.obj");
+
 	/*---------------- MODELOS BAÑO ----------------*/
 	Model ducha("resources/objects/Bathroom/ducha.obj");
 	Model espejo("resources/objects/Bathroom/espejo.obj");
@@ -985,18 +987,22 @@ int main()
 		mesaCocina.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		//model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(30.0f, 1.0f, 250.0f));
-		model = glm::scale(model, glm::vec3(3.0f));
+		model = glm::translate(model, glm::vec3(86.0f, 1.0f, 145.0f));
+		model = glm::scale(model, glm::vec3(4.0f,4.5f,4.0f));
 		staticShader.setMat4("model", model);
 		gabinete.Draw(staticShader);
 
-	/*	model = glm::mat4(1.0f);
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(30.0f, 1.0f, 250.0f));
-		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(72.0f, 1.0f, 210.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 4.5f, 4.0f));
 		staticShader.setMat4("model", model);
-		estufa.Draw(staticShader);*/
+		gabinete2.Draw(staticShader);
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(244.0f, 1.0f, -103.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 4.5f, 4.0f));
+		staticShader.setMat4("model", model);
+		gabinete3.Draw(staticShader);
 		/*----------------- FIN COCINA/COMEDOR --------------------*/
 
 
