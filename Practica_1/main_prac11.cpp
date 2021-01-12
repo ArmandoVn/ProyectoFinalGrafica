@@ -87,7 +87,7 @@ float	incX = 0.0f,
 		giroMonitoInc = 0.0f;
 
 // Sound
-bool soundon = true;
+bool soundon = false;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -147,8 +147,8 @@ void interpolation(void)
 // Sound
 void sound() {
 	if (soundon) {
-		bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
-		cout << "Ambient:" << played << endl;
+		//bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
+		//cout << "Ambient:" << played << endl;
 		soundon = false;
 	}
 }
@@ -348,8 +348,6 @@ int main()
 	Model banco("resources/objects/Banco/banco.obj");
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
-
-
 	Model charger("resources/objects/Charger/charger.obj");
 	/*---------------- MODELOS COCINA ----------------*/
 	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
@@ -778,9 +776,8 @@ int main()
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// CUNA
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(45.0f, -1.0f, -28.5f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(45.0f, -1.0f, -28.5f));
+		model = glm::scale(model, glm::vec3(1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		cuna.Draw(staticShader);
@@ -968,13 +965,13 @@ int main()
 			SDL_Delay((int)(LOOP_TIME - deltaTime));
 		}
 
-		// Sound
-		sound();
-
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		// Sound
+		sound();
 	}
 
 	skybox.Terminate();
@@ -1021,7 +1018,7 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	
 	// Sound
 	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
-		soundon = false;
+		soundon = true;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
