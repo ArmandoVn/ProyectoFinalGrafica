@@ -552,7 +552,8 @@ int main()
 	Model alacena("resources/objects/Alacena/alacena.obj");
 	Model refri("resources/objects/Refri/refri.obj");
 	Model mesaCocina("resources/objects/Mesa/mesa00.obj");
-	
+	Model estufa("resources/objects/Estufa/Estufa_LSVC.obj");
+	Model sink("resources/objects/Lavabo/Sink_LSVC.obj");
 	Model silla("resources/objects/Silla/silla.obj");
 	Model gabinete("resources/objects/Gabinetes/gabinete.obj");
 	Model gabinete2("resources/objects/Gabinetes/gabinete2.obj");
@@ -1115,7 +1116,7 @@ int main()
 
 		/*----------------- MODELOS COCINA --------------------*/
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.2f, 212.0f));
+		model = glm::translate(model, glm::vec3(100.0f, 0.2f, 214.0f));
 		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::scale(model, glm::vec3(0.18f, 0.25f, 0.18f));
 		staticShader.setMat4("model", model);
@@ -1190,16 +1191,32 @@ int main()
 		gabinete.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(72.0f, 1.0f, 210.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 4.5f, 4.0f));
+		model = glm::translate(model, glm::vec3(72.0f, 1.0f, 213.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 4.5f, 5.0f));
 		staticShader.setMat4("model", model);
 		gabinete2.Draw(staticShader);
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(244.0f, 1.0f, -103.0f));
-		model = glm::scale(model, glm::vec3(4.0f, 4.5f, 4.0f));
+		model = glm::scale(model, glm::vec3(4.85f, 4.5f, 5.0f));
 		staticShader.setMat4("model", model);
 		gabinete3.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-113.0f, 16.0f, -245.0f));
+		model = glm::scale(model, glm::vec3(0.45f, 1.5f, 0.7f));
+		staticShader.setMat4("model", model);
+		estufa.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(201.0f, 13.0f, -55.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		staticShader.setMat4("model", model);
+		sink.Draw(staticShader);
+
+
 		/*----------------- FIN COCINA/COMEDOR --------------------*/
 
 
