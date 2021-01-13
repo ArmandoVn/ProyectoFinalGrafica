@@ -533,6 +533,7 @@ int main()
 	Model librero("resources/objects/Librero/librero.obj");
 	Model chimenea("resources/objects/Chimenea/chimenea1.obj");
 	Model sofa("resources/objects/Sofa/sofa.obj");
+	Model sofa1("resources/objects/Sofa1/sofa1.obj");
 	Model mesa("resources/objects/Mesa/mesa.obj");
 	Model cama("resources/objects/Cama/cama.obj");
 	Model cama2("resources/objects/Cama2/cama2.obj");
@@ -747,6 +748,27 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 60.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		// CAMA Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-80.0f, 0.1f, 5.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cama2.Draw(staticShader);
+
+		// Mueble Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-130.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
+
+		// Mueble2 Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-30.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
 		/*------------------ FIN RECAMARA PADRES ----------------------*/
 
 
@@ -1037,6 +1059,31 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		//Sofá grande Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(240.0f, 0.6f, 320.f));
+		model = glm::scale(model, glm::vec3(1.3f, 0.8f, 1.3f));
+		staticShader.setMat4("model", model);
+		sofa.Draw(staticShader);
+
+		//Sofá grande Sala
+		
+		model = glm::translate(model, glm::vec3(-27.0f, 0.6f, 70.f));
+		//model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		sofa1.Draw(staticShader);
+
+		//Mesa Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(190.0f, 0.6f, 340.f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 1.0f));
+		staticShader.setMat4("model", model);
+		mesa.Draw(staticShader);
+
+
+
 		/*----------------- FIN SALA --------------------*/
 
 
