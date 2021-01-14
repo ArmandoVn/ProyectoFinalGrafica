@@ -87,7 +87,7 @@ float	incX = 0.0f,
 		giroMonitoInc = 0.0f;
 
 // Sound
-bool soundon = false;
+bool soundon = true;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -147,8 +147,8 @@ void interpolation(void)
 // Sound
 void sound() {
 	if (soundon) {
-		//bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
-		//cout << "Ambient:" << played << endl;
+		bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
+		cout << "Ambient:" << played << endl;
 		soundon = false;
 	}
 }
@@ -331,7 +331,7 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
-
+	Model puerta("resources/objects/Puerta/puerta.obj");
 	Model librero("resources/objects/Librero/librero.obj");
 	Model chimenea("resources/objects/Chimenea/chimenea1.obj");
 	Model sofa("resources/objects/Sofa/sofa.obj");
@@ -349,6 +349,9 @@ int main()
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
 	Model charger("resources/objects/Charger/charger.obj");
+	Model pavimento("resources/objects/Pavimento/pavimento.obj");
+	// GRAGE
+	//Model garage("resources/objects/Garage/garage.obj");
 	/*---------------- MODELOS COCINA ----------------*/
 	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
 	Model alacena("resources/objects/Alacena/alacena.obj");
@@ -476,7 +479,6 @@ int main()
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
 
-
 		// BARDA EXTERIOR
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, 0.0f));
@@ -492,23 +494,69 @@ int main()
 	
 
 		// ARBOLES
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 700.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 600.0f));
 		tmp = model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
-
-		// ARBOLES
-		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -100.0f));
+		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -50.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
+		
+		//PAVIMENTO
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.09f, 220.0f));
+		tmp = model = glm::scale(model, glm::vec3(2.0f, 0.01f, 5.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
 
-		// Charger
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-743.0f, 0.09f, 410.0f));
+		tmp = model = glm::scale(model, glm::vec3(2.0f, 0.01f, 5.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+
+		// CHARGER
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
 		staticShader.setMat4("model", model);
 		charger.Draw(staticShader);
+
+
+		// GARAGE
+		//model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.25f, 200.0f));
+		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0));
+		//staticShader.setMat4("model", model);
+		//garage.Draw(staticShader);
 
 
 		/*------------------ RECAMARA PADRES ----------------------*/
@@ -525,6 +573,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.07f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		// PUERTA
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-116.5f, 0.0f, 20.5f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 		// PARED VENTANA
 		model = glm::mat4(1.0f);
@@ -579,6 +634,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		// PUERTA BAÑO
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-116.5f, 0.0f, -45.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 		/*---------------- MODELOS BAÑO ---------------------*/
 		model = glm::mat4(1.0f);
@@ -655,6 +717,7 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+
 		// PISO DE MADERA
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 256.5f));
@@ -662,6 +725,13 @@ int main()
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
 	
+
+		// PUERTA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-31.5f, 0.0f, 243.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
+
 
 		// CAMA
 		model = glm::mat4(1.0f);
@@ -769,11 +839,18 @@ int main()
 
 		// PARED JAMIE OESTE PEQUEÑA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(2.0f, 25.0f, 31.5f));
+		model = glm::translate(model, glm::vec3(2.0f, 25.0f, 33.0f));
 		model = glm::scale(model, glm::vec3(0.00001f, 0.06f, 0.008f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		// PUERTA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(3.5f, 0.0f, 55.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 
 		// CUNA
@@ -832,6 +909,7 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+
 		// PISO DE MADERA
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 450.5f));
@@ -869,6 +947,14 @@ int main()
 		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		// PUERTA
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-418.0f, 0.0f, 80.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 	
 		//Librero
@@ -1104,7 +1190,7 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	
 	// Sound
 	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
-		soundon = true;
+		soundon = false;
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
