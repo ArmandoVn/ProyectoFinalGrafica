@@ -56,8 +56,8 @@ double	deltaTime = 0.0f,
 		lastFrame = 0.0f;
 
 //Lighting
-glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
-glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
+glm::vec3 lightPosition(20.0f, 30.0f, -200.0f);
+glm::vec3 lightDirection(-1.0f, -1.0f, -1.0f);
 
 //Sound
 void sound();
@@ -65,9 +65,7 @@ void sound();
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
-float	movAuto_x = 0.0f,
-		movAuto_z = 0.0f,
-		movBanJx = 0.0f,
+float	movBanJx = 0.0f,
 		movBanJz = 0.0f,
 		movCama1 = 0.0f,
 		movCama2 = 0.0f,
@@ -107,16 +105,15 @@ float initBottle = 270.0f,
 	  mariY = 13.0f,
 	  mariZ = 25.0f;
 //Keyframes (Manipulación y dibujo)
-float	posX = 0.0f,
-		posY = 0.0f,
-		posZ = 0.0f,
-		rotRodIzq = 0.0f,
-		giroMonito = 0.0f;
+float	movAuto_x = 0.0f,
+		movAuto_y = 0.0f,
+		movAuto_z = 0.0f,
+		giroAuto_y = 0.0f;
 float	incX = 0.0f,
 		incY = 0.0f,
 		incZ = 0.0f,
 		rotInc = 0.0f,
-		giroMonitoInc = 0.0f;
+		giroAuto_yInc = 0.0f;
 
 // Sound
 
@@ -134,16 +131,15 @@ int i_curr_steps = 0;
 typedef struct _frame
 {
 	//Variables para GUARDAR Key Frames
-	float posX;		//Variable para PosicionX
-	float posY;		//Variable para PosicionY
-	float posZ;		//Variable para PosicionZ
-	float rotRodIzq;
-	float giroMonito;
+	float movAuto_x;		//Variable para PosicionX
+	float movAuto_y;		//Variable para PosicionY
+	float movAuto_z;		//Variable para PosicionY
+	float giroAuto_y;		//Variable para PosicionZ
 
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
+int FrameIndex = 5;			//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -151,35 +147,33 @@ void saveFrame(void)
 {
 	//printf("frameindex %d\n", FrameIndex);
 	std::cout << "Frame Index = " << FrameIndex << std::endl;
+	std::cout << "X = " << movAuto_x << std::endl;
+	std::cout << "Y = " << movAuto_y << std::endl;
+	std::cout << "Z = " << movAuto_z << std::endl;
+	std::cout << "GIRO Y = " << giroAuto_y << std::endl;
 
-	KeyFrame[FrameIndex].posX = posX;
-	KeyFrame[FrameIndex].posY = posY;
-	KeyFrame[FrameIndex].posZ = posZ;
-
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	KeyFrame[FrameIndex].giroMonito = giroMonito;
+	KeyFrame[FrameIndex].movAuto_x = movAuto_x;
+	KeyFrame[FrameIndex].movAuto_y = movAuto_y;
+	KeyFrame[FrameIndex].movAuto_z = movAuto_z;
+	KeyFrame[FrameIndex].giroAuto_y = giroAuto_y;
 
 	FrameIndex++;
 }
 
 void resetElements(void)
 {
-	posX = KeyFrame[0].posX;
-	posY = KeyFrame[0].posY;
-	posZ = KeyFrame[0].posZ;
-
-	rotRodIzq = KeyFrame[0].rotRodIzq;
-	giroMonito = KeyFrame[0].giroMonito;
+	movAuto_x = KeyFrame[0].movAuto_x;
+	movAuto_y = KeyFrame[0].movAuto_y;
+	movAuto_z = KeyFrame[0].movAuto_z;
+	giroAuto_y = KeyFrame[0].giroAuto_y;
 }
 
 void interpolation(void)
 {
-	incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
-	incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
-	incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
-
-	rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-	giroMonitoInc = (KeyFrame[playIndex + 1].giroMonito - KeyFrame[playIndex].giroMonito) / i_max_steps;
+	incX = (KeyFrame[playIndex + 1].movAuto_x - KeyFrame[playIndex].movAuto_x) / i_max_steps;
+	incY = (KeyFrame[playIndex + 1].movAuto_y - KeyFrame[playIndex].movAuto_y) / i_max_steps;
+	incZ = (KeyFrame[playIndex + 1].movAuto_z - KeyFrame[playIndex].movAuto_z) / i_max_steps;
+	giroAuto_yInc = (KeyFrame[playIndex + 1].giroAuto_y - KeyFrame[playIndex].giroAuto_y) / i_max_steps;
 
 }
 
@@ -216,12 +210,10 @@ void animate(void)
 		else
 		{
 			//Draw animation
-			posX += incX;
-			posY += incY;
-			posZ += incZ;
-
-			rotRodIzq += rotInc;
-			giroMonito += giroMonitoInc;
+			movAuto_x += incX;
+			movAuto_y += incY;
+			movAuto_z += incZ;
+			giroAuto_y += giroAuto_yInc;
 
 			i_curr_steps++;
 		}
@@ -241,63 +233,6 @@ void animate(void)
 			initBottleY -= 1.0f;
 			if (initBottleY <= -6.0f)
 				displayGlass = true;
-		}
-	}
-	
-	//Vehículo
-	if (animacion)
-	{
-		if (recorrido1)
-		{
-			movAuto_z -= 1.5f;
-			orienta = 180.0f;
-			if (movAuto_z < -150.0f)
-			{
-				recorrido1 = false;
-				recorrido4 = true;
-			}
-		}
-		if (recorrido2)
-		{
-			movAuto_x -= 1.5f;
-			orienta = -90.0f;
-			if (movAuto_x < -200.0f)
-			{
-				recorrido2 = false;
-				recorrido6 = true;
-			}
-		}
-		if (recorrido3)
-		{
-			movAuto_z += 1.5f;
-			orienta = 0.0f;
-			if (movAuto_z > 150.0f)
-			{
-				recorrido3 = false;
-				recorrido2 = true;
-			}
-		}
-		if (recorrido4)
-		{
-			movAuto_x -= 1.5f;
-			orienta = -90.0f;
-			if (movAuto_x < -200.0f)
-			{
-				recorrido4 = false;
-				recorrido5 = true;
-			}
-		}
-		if (recorrido5)
-		{
-			movAuto_x += 2.0f;
-			movAuto_z += 3.0f;
-			orienta = 33.4248f;
-			if (movAuto_z >= 150.0f)
-			{
-				recorrido5 = false;
-				recorrido2 = true;
-			}
-
 		}
 	}
 
@@ -622,14 +557,38 @@ int main()
 	//animacionPersonaje.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
-	for (int i = 0; i < MAX_FRAMES; i++)
-	{
-		KeyFrame[i].posX = 0;
-		KeyFrame[i].posY = 0;
-		KeyFrame[i].posZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
-		KeyFrame[i].giroMonito = 0;
-	}
+	//for (int i = 0; i < MAX_FRAMES; i++)
+	//{
+	//	KeyFrame[i].movAuto_x = 0;
+	//	KeyFrame[i].movAuto_y = 0;
+	//	KeyFrame[i].movAuto_z = 0;
+	//	KeyFrame[i].giroAuto_y = 0;
+	//}
+
+	KeyFrame[0].movAuto_x = -150;
+	KeyFrame[0].movAuto_y = 0;
+	KeyFrame[0].movAuto_z = 0;
+	KeyFrame[0].giroAuto_y = 0;
+
+	KeyFrame[1].movAuto_x = 310;
+	KeyFrame[1].movAuto_y = 40;
+	KeyFrame[1].movAuto_z = 0;
+	KeyFrame[1].giroAuto_y = 0;
+
+	KeyFrame[2].movAuto_x = 850;
+	KeyFrame[2].movAuto_y = 0;
+	KeyFrame[2].movAuto_z = 0;
+	KeyFrame[2].giroAuto_y = 0;
+
+	KeyFrame[3].movAuto_x = 850;
+	KeyFrame[3].movAuto_y = 0;
+	KeyFrame[3].movAuto_z = 0;
+	KeyFrame[3].giroAuto_y = 90;
+
+	KeyFrame[4].movAuto_x = 850;
+	KeyFrame[4].movAuto_y = 0;
+	KeyFrame[4].movAuto_z = -480;
+	KeyFrame[4].giroAuto_y = 90;
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -719,7 +678,7 @@ int main()
 		/*---------------- EXTERIOR ----------------*/
 		// PASTO
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
@@ -791,8 +750,16 @@ int main()
 
 
 		// CHARGER
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
+		//model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
+		//staticShader.setMat4("model", model);
+		//charger.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.25f, 740.0f));
+		model = glm::translate(model, glm::vec3(movAuto_x, movAuto_y, movAuto_z));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::rotate(model, glm::radians(giroAuto_y), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		charger.Draw(staticShader);
 
@@ -1511,7 +1478,25 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
 	//To Configure Model
-	
+
+	//Charger
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+		movAuto_x +=10;
+	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+		movAuto_x -=10;
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+		movAuto_y += 10;
+	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		movAuto_y -= 10;
+	if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
+		movAuto_z += 10;
+	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+		movAuto_z -= 10;
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
+		giroAuto_y += 10;
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		giroAuto_y -= 10;
+
 	//Botella
 	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
 		activeAnim = true;
