@@ -73,7 +73,11 @@ bool	animacion = false,
 		recorrido5 = false,
 		recorrido6 = false;
 
-
+float initBottle = 270.0f,
+	  initBottleY = 20.0f,
+	  rotateBottle = 0.0f,
+	  mariY = 13.0f,
+	  mariZ = 25.0f;
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
 		posY = 0.0f,
@@ -87,7 +91,11 @@ float	incX = 0.0f,
 		giroMonitoInc = 0.0f;
 
 // Sound
-bool soundon = false;
+bool soundon = false,
+     activeAnim = false,
+	 activeAnimM = false,
+	 displayBottle = true,
+	 displayGlass = false;
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -188,72 +196,35 @@ void animate(void)
 		}
 	}
 
-	//Vehículo
-	if (animacion)
-	{
-		if (recorrido1)
-		{
-			movAuto_z -= 1.5f;
-			orienta = 180.0f;
-			if (movAuto_z < -150.0f)
-			{
-				recorrido1 = false;
-				recorrido4 = true;
-			}
-		}
-		if (recorrido2)
-		{
-			movAuto_x -= 1.5f;
-			orienta = -90.0f;
-			if (movAuto_x < -200.0f)
-			{
-				recorrido2 = false;
-				recorrido6 = true;
-			}
-		}
-		if (recorrido3)
-		{
-			movAuto_z += 1.5f;
-			orienta = 0.0f;
-			if (movAuto_z > 150.0f)
-			{
-				recorrido3 = false;
-				recorrido2 = true;
-			}
-		}
-		if (recorrido4)
-		{
-			movAuto_x -= 1.5f;
-			orienta = -90.0f;
-			if (movAuto_x < -200.0f)
-			{
-				recorrido4 = false;
-				recorrido5 = true;
-			}
-		}
-		if (recorrido5)
-		{
-			movAuto_x += 2.0f;
-			movAuto_z += 3.0f;
-			orienta = 33.4248f;
-			if (movAuto_z >= 150.0f)
-			{
-				recorrido5 = false;
-				recorrido2 = true;
-			}
-		}
-		if (recorrido6)
-		{
-			movAuto_x += 3.0f;
-			movAuto_z -= 2.25f;
-			orienta = 126.87f; // m = 0.75
-			if (movAuto_x >= 0.0f)
-			{
-				recorrido6 = false;
-				recorrido1 = true;
-			}
+	//Botella 
+	if (activeAnim) {
+		if (initBottle <= 275.0f) {
+			initBottle += 0.1;
+			if (rotateBottle<=50.0f) {
+				rotateBottle += 1.0;
+			}	
+		}if (initBottleY >= -5.0f) {
+			initBottleY -= 1.0f;
+			if (initBottleY <= -6.0f) {
+				displayGlass = true;
+			}		
 		}
 	}
+
+	//////Mariposa
+	if (activeAnimM) {
+		if (mariY <= 20.0f) {
+			mariY += 1.0f;
+			mariZ -= 0.4f;
+			if (mariY >= 7.0f) {
+				mariY -=1.0f;
+				mariZ -= 1.0f;
+			}
+		}	
+	}
+	////
+	std::cout << "Y: "<< mariY << std::endl;
+	std::cout << "Z: " << mariZ << std::endl;
 }
 
 int main()
@@ -349,6 +320,7 @@ int main()
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
 	Model charger("resources/objects/Charger/charger.obj");
+
 	/*---------------- MODELOS COCINA ----------------*/
 	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
 	Model alacena("resources/objects/Alacena/alacena.obj");
@@ -360,7 +332,10 @@ int main()
 	Model gabinete("resources/objects/Gabinetes/gabinete.obj");
 	Model gabinete2("resources/objects/Gabinetes/gabinete2.obj");
 	Model gabinete3("resources/objects/Gabinetes/gabinete3.obj");
-
+	Model broken("resources/objects/Glass/broken.obj");
+	Model bottle("resources/objects/Glass/bottle.obj");
+	Model agua("resources/objects/Glass/water.obj");
+	Model mari("resources/objects/Mariposa/mariposa.obj");
 	/*---------------- MODELOS BAÑO ----------------*/
 	Model ducha("resources/objects/Bathroom/ducha.obj");
 	Model espejo("resources/objects/Bathroom/espejo.obj");
@@ -369,6 +344,8 @@ int main()
 	Model paperholder("resources/objects/Bathroom/paperholder.obj");
 	Model tina("resources/objects/Bathroom/tina.obj");
 	Model toilet("resources/objects/Bathroom/toilet.obj");
+
+	Model pool("resources/objects/Pool/pool.obj");
 
 
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -1018,6 +995,13 @@ int main()
 		staticShader.setMat4("model", model);
 		sink.Draw(staticShader);
 
+		model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 1.0));
+		model = glm::translate(model, glm::vec3(160.0f, mariY, mariZ)); //100,13,25 avanza con menos 
+		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		mari.Draw(staticShader);
 
 		/*----------------- FIN COCINA/COMEDOR --------------------*/
 
@@ -1047,7 +1031,37 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-150.0f, 23.0f, 255.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.2f, 0.6f));
+		staticShader.setMat4("model", model);
+		agua.Draw(staticShader);
+
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(110.0f, initBottleY, initBottle)); //110,20,270 posición inicial. Se mueve a la derecha
+			model = glm::rotate(model, glm::radians(rotateBottle), glm::vec3(1.0f, 0.0f, 0.0)); //50.0f valor máximo para  propósitos de la animación 
+			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+			staticShader.setMat4("model", model);
+			bottle.Draw(staticShader);
+		
+		if (displayGlass) {
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(110.0f, 2.0f, 280.0f));
+			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+			staticShader.setMat4("model", model);
+			broken.Draw(staticShader);
+		}
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(250.0f, 1.0f, 55.0f));
+		model = glm::scale(model, glm::vec3(4.0f));
+		staticShader.setMat4("model", model);
+		pool.Draw(staticShader);
+		
+		glEnable(GL_BLEND);
 		/*----------------- FIN SALA/COMEDOR --------------------*/
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1089,6 +1103,7 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+	//Camera movement 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		camera.ProcessKeyboard(FORWARD, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -1098,22 +1113,23 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
 	//To Configure Model
-	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
-		posZ++;
-	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-		posZ--;
-	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
-		posX--;
-	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-		posX++;
-	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-		rotRodIzq--;
-	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
-		rotRodIzq++;
-	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
-		giroMonito--;
-	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
-		giroMonito++;
+	
+	//Botella
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+		activeAnim = true;
+		initBottle++;
+		initBottleY--;
+		rotateBottle++;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
+		activeAnimM = true;
+		mariY++;
+		/*mariZ--;*/
+	}
+		
+	//Maiposa
+
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
