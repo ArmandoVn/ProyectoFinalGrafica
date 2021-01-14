@@ -1,0 +1,32 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 13.01.2021 01:49:42
+
+mtllib pavimento.mtl
+
+#
+# object Mesh690_Model_014
+#
+
+v  -24.3042 2.2198 -19.7655
+v  23.8652 2.2198 19.0807
+v  23.8652 2.2198 -19.7655
+v  -24.3042 2.2198 19.0807
+# 4 vertices
+
+vn 0.0000 1.0000 0.0000
+# 1 vertex normals
+
+vt -3.8048 1.2470 0.0000
+vt -1.6348 -1.2038 0.0000
+vt -1.6348 1.2470 0.0000
+vt -3.8048 -1.2038 0.0000
+# 4 texture coords
+
+o Mesh690_Model_014
+g Mesh690_Model_014
+usemtl Gravel
+s off
+f 1/1/1 2/2/1 3/3/1 
+f 2/2/1 1/1/1 4/4/1 
+# 2 faces
+

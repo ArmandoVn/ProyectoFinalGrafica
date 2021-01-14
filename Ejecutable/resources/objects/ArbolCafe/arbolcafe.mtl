@@ -1,0 +1,68 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 03.05.2020 19:35:50
+
+newmtl cgaxis_models_115_37_04
+	Ns 50.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0025 0.0025 0.0025
+	Ke 0.0000 0.0000 0.0000
+	map_Ka cgaxis_models_115_37_04.jpg
+	map_Kd cgaxis_models_115_37_04.jpg
+	map_bump cgaxis_models_115_37_04_bump.jpg
+	bump cgaxis_models_115_37_04_bump.jpg
+
+newmtl cgaxis_models_115_37_03
+	Ns 50.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0025 0.0025 0.0025
+	Ke 0.0000 0.0000 0.0000
+	map_Ka cgaxis_models_115_37_03.jpg
+	map_Kd cgaxis_models_115_37_03.jpg
+	map_bump cgaxis_models_115_37_03_bump.jpg
+	bump cgaxis_models_115_37_03_bump.jpg
+
+newmtl cgaxis_models_115_37_02
+	Ns 50.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0025 0.0025 0.0025
+	Ke 0.0000 0.0000 0.0000
+	map_Ka cgaxis_models_115_37_02.jpg
+	map_Kd cgaxis_models_115_37_02.jpg
+	map_d cgaxis_models_115_37_02_opacity.jpg
+	map_bump cgaxis_models_115_37_02_bump.jpg
+	bump cgaxis_models_115_37_02_bump.jpg
+
+newmtl cgaxis_models_115_37_01
+	Ns 50.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0025 0.0025 0.0025
+	Ke 0.0000 0.0000 0.0000
+	map_Ka cgaxis_models_115_37_01.jpg
+	map_Kd cgaxis_models_115_37_01.jpg
+	map_d cgaxis_models_115_37_01_opacity.jpg
+	map_bump cgaxis_models_115_37_01_bump.jpg
+	bump cgaxis_models_115_37_01_bump.jpg
