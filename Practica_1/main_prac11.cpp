@@ -43,7 +43,7 @@ const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1200;
 
 // camera
-Camera camera(glm::vec3(0.0f, 200.0f, 100.0f));
+Camera camera(glm::vec3(90.0f, 25.0f, 420.0f)); 
 float MovementSpeed = 1.5f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -119,8 +119,9 @@ float	incX = 0.0f,
 
 bool activeAnim = false,
 	 activeAnimM = false,
-	 displayBottle = true,
-	 displayGlass = false;
+	 displayGlass = false,
+			mari1 = true,
+			mari2 = false;
 
 bool soundon = true;
 
@@ -238,20 +239,24 @@ void animate(void)
 
 	//////Mariposa
 	if (activeAnimM) {
-		if (mariY <= 20.0f) {
+		
+		if (mari1) {
 			mariY += 1.0f;
-			mariZ -= 0.4f;
-			if (mariY >= 7.0f) {
-				mariY -=1.0f;
-				mariZ -= 1.0f;
+			mariZ -= 0.8f;
+			if (mariY >= 14.0f) {
+				mari2 = true;
+				mari1 = false;
 			}
-		}	
-	}
+		}
+		if (mari2) {
+			mariY -= 1.0f;
+			if (mariY <= -6.0f) {
+				mari1 = true;
+				mari2 = false;
+			}
+		}
 
-	////
-	/*std::cout << "Y: "<< mariY << std::endl;
-	std::cout << "Z: " << mariZ << std::endl;
-*/
+	}
 
 
 	//Animación Banco de Jaimie
@@ -1356,7 +1361,7 @@ int main()
 
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(201.0f, 13.0f, -55.0f));
+		model = glm::translate(model, glm::vec3(201.0f, 12.6f, -55.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 		staticShader.setMat4("model", model);
 		sink.Draw(staticShader);
@@ -1401,8 +1406,8 @@ int main()
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-150.0f, 23.0f, 255.0f));
-		model = glm::scale(model, glm::vec3(0.8f, 0.2f, 0.6f));
+		model = glm::translate(model, glm::vec3(55.0f, 20.5f, 206.0f));
+		model = glm::scale(model, glm::vec3(0.55f, 0.2f, 0.4f));
 		staticShader.setMat4("model", model);
 		agua.Draw(staticShader);
 
@@ -1504,14 +1509,12 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		initBottleY--;
 		rotateBottle++;
 	}
-
+	//Mariposa
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
 		activeAnimM = true;
-		mariY++;
-		/*mariZ--;*/
 	}
 		
-	//Maiposa
+	
 
 
 	//Car animation
