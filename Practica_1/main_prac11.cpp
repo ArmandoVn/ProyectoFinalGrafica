@@ -63,8 +63,6 @@ glm::vec3 lightDirection(-1.0f, -1.0f, -1.0f);
 void sound();
 
 // posiciones
-//float x = 0.0f;
-//float y = 0.0f;
 float	movBanJx = 0.0f,
 		movBanJz = 0.0f,
 		movCama1 = 0.0f,
@@ -526,10 +524,8 @@ int main()
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
 	Model charger("resources/objects/Charger/charger.obj");
-
 	Model pavimento("resources/objects/Pavimento/pavimento.obj");
-	// GRAGE
-	//Model garage("resources/objects/Garage/garage.obj");
+	Model bodega("resources/objects/Bodega/bodega.obj");
 
 	/*---------------- MODELOS COCINA ----------------*/
 	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
@@ -657,21 +653,6 @@ int main()
 		glm::vec3 lightColor = glm::vec3(1.0f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
-		
-
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-		//Rememder to activate the shader with the animation
-		/*animShader.use();
-		animShader.setMat4("projection", projection);
-		animShader.setMat4("view", view);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.3f, -1.75f, 53.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.2f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		animShader.setMat4("model", model);
-		animacionPersonaje.Draw(animShader);]*/
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -689,14 +670,47 @@ int main()
 		pasto.Draw(staticShader);
 
 		// BARDA EXTERIOR
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.5f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, 0.5f, 0.0f));
 		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
 		staticShader.setMat4("model", model);
 		barda_exterior.Draw(staticShader);
 
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.5f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(100.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(200.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(400.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(500.0f, 0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
+		staticShader.setMat4("model", model);
+		barda_exterior.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(600.0f, 0.5f, 0.0f));
 		model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1000.0f));
 		staticShader.setMat4("model", model);
 		barda_exterior.Draw(staticShader);
@@ -755,11 +769,6 @@ int main()
 
 
 		// CHARGER
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
-		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
-		//staticShader.setMat4("model", model);
-		//charger.Draw(staticShader);
-
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.25f, 740.0f));
 		model = glm::translate(model, glm::vec3(movAuto_x, movAuto_y, movAuto_z));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
@@ -769,11 +778,12 @@ int main()
 		charger.Draw(staticShader);
 
 
-		// GARAGE
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.25f, 200.0f));
-		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0));
-		//staticShader.setMat4("model", model);
-		//garage.Draw(staticShader);
+		// BODEGA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.0f, 37.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		bodega.Draw(staticShader);
 
 
 		/*------------------ RECAMARA PADRES ----------------------*/
