@@ -64,6 +64,13 @@ void sound();
 //float y = 0.0f;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
+		movBanJx = 0.0f,
+		movBanJz = 0.0f,
+		movCama1 = 0.0f,
+		movCama2 = 0.0f,
+		movMueble1 = 0.0f,
+		movMueble2 = 0.0f,
+		movMueble3 = 0.0f,
 		orienta = 180.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -71,7 +78,25 @@ bool	animacion = false,
 		recorrido3 = false,
 		recorrido4 = false,
 		recorrido5 = false,
-		recorrido6 = false;
+		recorrido6 = false,
+		recorridoBJ1 = false,
+		recorridoBJ2 = false,
+		animacionBJ = false,
+		recorridoBJR1 = false,
+		recorridoBJR2 = false,
+		animacionBJR = false,
+		animacionCM = false,
+		recorridoM1 = false,
+		recorridoM2 = false,
+		recorridoC1 = false,
+		recorridoC2 = false,
+		recorridoM3 = false,
+		animacionCMR = false,
+		recorridoMR1 = false,
+		recorridoMR2 = false,
+		recorridoCR1 = false,
+		recorridoCR2 = false,
+		recorridoMR3 = false;
 
 float initBottle = 270.0f,
 	  initBottleY = 20.0f,
@@ -91,11 +116,14 @@ float	incX = 0.0f,
 		giroMonitoInc = 0.0f;
 
 // Sound
-bool soundon = false,
-     activeAnim = false,
+
+bool activeAnim = false,
 	 activeAnimM = false,
 	 displayBottle = true,
 	 displayGlass = false;
+
+bool soundon = true;
+
 
 #define MAX_FRAMES 9
 int i_max_steps = 60;
@@ -155,8 +183,8 @@ void interpolation(void)
 // Sound
 void sound() {
 	if (soundon) {
-		//bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
-		//cout << "Ambient:" << played << endl;
+		bool played = PlaySound("birds.wav", NULL, SND_LOOP | SND_ASYNC);
+		cout << "Ambient:" << played << endl;
 		soundon = false;
 	}
 }
@@ -196,18 +224,77 @@ void animate(void)
 		}
 	}
 
+
 	//Botella 
-	if (activeAnim) {
-		if (initBottle <= 275.0f) {
+	if (activeAnim)
+	{
+		if (initBottle <= 275.0f)
+		{
 			initBottle += 0.1;
-			if (rotateBottle<=50.0f) {
+			if (rotateBottle <= 50.0f)
 				rotateBottle += 1.0;
-			}	
-		}if (initBottleY >= -5.0f) {
+		}
+		if (initBottleY >= -5.0f) {
 			initBottleY -= 1.0f;
-			if (initBottleY <= -6.0f) {
+			if (initBottleY <= -6.0f)
 				displayGlass = true;
-			}		
+		}
+	}
+	
+	//Vehículo
+	if (animacion)
+	{
+		if (recorrido1)
+		{
+			movAuto_z -= 1.5f;
+			orienta = 180.0f;
+			if (movAuto_z < -150.0f)
+			{
+				recorrido1 = false;
+				recorrido4 = true;
+			}
+		}
+		if (recorrido2)
+		{
+			movAuto_x -= 1.5f;
+			orienta = -90.0f;
+			if (movAuto_x < -200.0f)
+			{
+				recorrido2 = false;
+				recorrido6 = true;
+			}
+		}
+		if (recorrido3)
+		{
+			movAuto_z += 1.5f;
+			orienta = 0.0f;
+			if (movAuto_z > 150.0f)
+			{
+				recorrido3 = false;
+				recorrido2 = true;
+			}
+		}
+		if (recorrido4)
+		{
+			movAuto_x -= 1.5f;
+			orienta = -90.0f;
+			if (movAuto_x < -200.0f)
+			{
+				recorrido4 = false;
+				recorrido5 = true;
+			}
+		}
+		if (recorrido5)
+		{
+			movAuto_x += 2.0f;
+			movAuto_z += 3.0f;
+			orienta = 33.4248f;
+			if (movAuto_z >= 150.0f)
+			{
+				recorrido5 = false;
+				recorrido2 = true;
+			}
+
 		}
 	}
 
@@ -222,15 +309,191 @@ void animate(void)
 			}
 		}	
 	}
+
 	////
-	std::cout << "Y: "<< mariY << std::endl;
+	/*std::cout << "Y: "<< mariY << std::endl;
 	std::cout << "Z: " << mariZ << std::endl;
+*/
+
+
+	//Animación Banco de Jaimie
+	if (animacionBJ)//x = 14.0f, z=-24.5f
+	{
+		if (recorridoBJ1)
+		{
+			movBanJz += 1.0f;
+			if (movBanJz > 20.0f)
+			{
+				recorridoBJ1 = false;
+				recorridoBJ2 = true;
+				
+			}
+		}
+
+		if (recorridoBJ2)
+		{
+			movBanJx += 1.0f;
+			if (movBanJx > 13.0f)
+			{
+				recorridoBJ2 = false;
+			}
+
+		}
+	}
+	//Animación Banco de Jaimie Regreso a la Cuna
+	if (animacionBJR)//x = 14.0f, z=-24.5f
+	{
+		if (recorridoBJR1)
+		{
+			movBanJx -= 1.0f;
+			if (movBanJx < 0.0f)
+			{
+				recorridoBJR1 = false;
+				recorridoBJR2 = true;
+
+			}
+		}
+
+		if (recorridoBJR2)
+		{
+			movBanJz -= 1.0f;
+			if (movBanJz < 0.0f)
+			{
+				recorridoBJR2 = false;
+			}
+
+		}
+	}
+
+	//Animación de mover los muebles
+	if (animacionCM)
+	{
+		if (recorridoM1)
+		{
+			movMueble1 -= 1.0f;
+			if (movMueble1 < -40.0f)
+			{
+				recorridoM1 = false;
+				recorridoC1 = true;
+
+			}
+		}
+
+		if (recorridoC1)
+		{
+			movCama1 -= 1.0f;
+			if (movCama1 < -37.0f)
+			{
+				recorridoC1 = false;
+				recorridoM2 = true;
+			}
+
+		}
+
+		if (recorridoM2)
+		{
+			movMueble2 -= 1.0f;
+			if (movMueble2 < -40.0f)
+			{
+				recorridoM2 = false;
+				recorridoC2 = true;
+
+			}
+		}
+
+		if (recorridoC2)
+		{
+			movCama2 -= 1.0f;
+			if (movCama2 < -37.0f)
+			{
+				recorridoC2 = false;
+				recorridoM3 = true;
+				
+			}
+
+		}
+		if (recorridoM3)
+		{
+			movMueble3 += 1.0f;
+			if (movMueble3 > 25.0f)
+			{
+				recorridoM3 = false;
+				
+
+			}
+
+		}
+	}
+
+
+	//Animación de mover los muebles de regreso
+	if (animacionCMR)
+	{
+		if (recorridoMR1)
+		{
+			movMueble1 += 1.0f;
+			if (movMueble1 > 0.0f)
+			{
+				recorridoMR1 = false;
+				recorridoCR2 = true;
+
+			}
+		}
+
+		if (recorridoCR1)
+		{
+			movCama1 += 1.0f;
+			if (movCama1 > 0.0f)
+			{
+				recorridoCR1 = false;
+				recorridoMR1 = true;
+			}
+
+		}
+
+		if (recorridoMR2)
+		{
+			movMueble2 += 1.0f;
+			if (movMueble2 > 0.0f)
+			{
+				recorridoMR2 = false;
+				recorridoMR3 = true;
+
+			}
+		}
+
+		if (recorridoCR2)
+		{
+			movCama2 += 1.0f;
+			if (movCama2 > 0.0f)
+			{
+				recorridoCR2 = false;
+				recorridoMR2 = true;
+
+			}
+
+		}
+		if (recorridoMR3)
+		{
+			movMueble3 -= 1.0f;
+			if (movMueble3 < 0.0f)
+			{
+				recorridoMR3 = false;
+
+
+			}
+
+		}
+	}
+
 }
+
+
 
 int main()
 {
 	// glfw: initialize and configure
-	// ------------------------------
+	// 
 	glfwInit();
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -241,8 +504,7 @@ int main()
 #endif
 
 	// glfw window creation
-	// --------------------
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Practica 11", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Proyecto Final", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -302,10 +564,11 @@ int main()
 	Model pasto("resources/objects/Pasto/pasto.obj");
 	Model arbol_cafe("resources/objects/ArbolCafe/arbolcafe.obj");
 	Model pared("resources/objects/Muro/muro.obj");
-
+	Model puerta("resources/objects/Puerta/puerta.obj");
 	Model librero("resources/objects/Librero/librero.obj");
 	Model chimenea("resources/objects/Chimenea/chimenea1.obj");
 	Model sofa("resources/objects/Sofa/sofa.obj");
+	Model sofa1("resources/objects/Sofa1/sofa1.obj");
 	Model mesa("resources/objects/Mesa/mesa.obj");
 	Model cama("resources/objects/Cama/cama.obj");
 	Model cama2("resources/objects/Cama2/cama2.obj");
@@ -320,6 +583,10 @@ int main()
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
 	Model charger("resources/objects/Charger/charger.obj");
+
+	Model pavimento("resources/objects/Pavimento/pavimento.obj");
+	// GRAGE
+	//Model garage("resources/objects/Garage/garage.obj");
 
 	/*---------------- MODELOS COCINA ----------------*/
 	Model cereal("resources/objects/ArticulosCocina/cajas.obj");
@@ -454,7 +721,6 @@ int main()
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
 
-
 		// BARDA EXTERIOR
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, 0.0f));
@@ -470,23 +736,69 @@ int main()
 	
 
 		// ARBOLES
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 700.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 0.0f, 600.0f));
 		tmp = model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
-
-		// ARBOLES
-		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -100.0f));
+		model = glm::translate(tmp, glm::vec3(350.0f, 0.0f, -50.0f));
 		staticShader.setMat4("model", model);
 		arbol_cafe.Draw(staticShader);
 
+		
+		//PAVIMENTO
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.09f, 220.0f));
+		tmp = model = glm::scale(model, glm::vec3(2.0f, 0.01f, 5.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
 
-		// Charger
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-743.0f, 0.09f, 410.0f));
+		tmp = model = glm::scale(model, glm::vec3(2.0f, 0.01f, 5.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+		tmp = model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -38.0f));
+		staticShader.setMat4("model", model);
+		pavimento.Draw(staticShader);
+
+
+		// CHARGER
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 0.25f, 200.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0));
 		staticShader.setMat4("model", model);
 		charger.Draw(staticShader);
+
+
+		// GARAGE
+		//model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.25f, 200.0f));
+		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0));
+		//staticShader.setMat4("model", model);
+		//garage.Draw(staticShader);
 
 
 		/*------------------ RECAMARA PADRES ----------------------*/
@@ -503,6 +815,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.07f, 0.06f, 0.09f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		// PUERTA
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-116.5f, 0.0f, 20.5f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 		// PARED VENTANA
 		model = glm::mat4(1.0f);
@@ -526,6 +845,27 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 60.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		// CAMA Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-80.0f, 0.1f, 5.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cama2.Draw(staticShader);
+
+		// Mueble Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-130.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
+
+		// Mueble2 Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-30.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
 		/*------------------ FIN RECAMARA PADRES ----------------------*/
 
 
@@ -557,6 +897,13 @@ int main()
 		model = glm::scale(model, glm::vec3(0.04f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+		// PUERTA BAÑO
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-116.5f, 0.0f, -45.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 		/*---------------- MODELOS BAÑO ---------------------*/
 		model = glm::mat4(1.0f);
@@ -633,6 +980,7 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+
 		// PISO DE MADERA
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 256.5f));
@@ -641,16 +989,23 @@ int main()
 		floor_house.Draw(staticShader);
 	
 
+		// PUERTA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-31.5f, 0.0f, 243.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
+
+
 		// CAMA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f + movCama2));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama.Draw(staticShader);
 
 		// CAMA2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f + movCama1));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama2.Draw(staticShader);
@@ -672,7 +1027,7 @@ int main()
 
 		// MUEBLEM
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-35.0f, 0.1f, 260.0f));
+		model = glm::translate(model, glm::vec3(-35.0f, 0.1f, 260.0f + movMueble3));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		mueblem.Draw(staticShader);
@@ -680,14 +1035,14 @@ int main()
 
 		// Mueble1
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 295.0f));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 295.0f + movMueble1));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		porteria.Draw(staticShader);
 
 		// Mueble2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 295.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 295.0f + movMueble2));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		mueble2.Draw(staticShader);
@@ -747,11 +1102,18 @@ int main()
 
 		// PARED JAMIE OESTE PEQUEÑA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(2.0f, 25.0f, 31.5f));
+		model = glm::translate(model, glm::vec3(2.0f, 25.0f, 33.0f));
 		model = glm::scale(model, glm::vec3(0.00001f, 0.06f, 0.008f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		// PUERTA
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(3.5f, 0.0f, 55.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 
 		// CUNA
@@ -763,7 +1125,7 @@ int main()
 
 		// BANCO
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(14.0f, 0.0f, -24.5f));
+		model = glm::translate(model, glm::vec3(14.0f + movBanJx, 0.0f, -24.5f + movBanJz));//x = 14.0f, z=-24.5f
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
@@ -810,12 +1172,38 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+
 		// PISO DE MADERA
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 450.5f));
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		//Sofá grande Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(240.0f, 0.6f, 320.f));
+		model = glm::scale(model, glm::vec3(1.3f, 0.8f, 1.3f));
+		staticShader.setMat4("model", model);
+		sofa.Draw(staticShader);
+
+		//Sofá grande Sala
+		
+		model = glm::translate(model, glm::vec3(-27.0f, 0.6f, 70.f));
+		//model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		sofa1.Draw(staticShader);
+
+		//Mesa Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(190.0f, 0.6f, 340.f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 1.0f));
+		staticShader.setMat4("model", model);
+		mesa.Draw(staticShader);
+
+
+
 		/*----------------- FIN SALA --------------------*/
 
 
@@ -847,6 +1235,14 @@ int main()
 		model = glm::scale(model, glm::vec3(0.065f, 0.06f, 0.0f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
+
+
+		// PUERTA
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-418.0f, 0.0f, 80.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.7f, 2.4f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
 
 	
 		//Librero
@@ -1083,7 +1479,6 @@ int main()
 		}
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
@@ -1098,7 +1493,7 @@ int main()
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
+
 void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -1137,7 +1532,35 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	
 	// Sound
 	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
-		soundon = true;
+		soundon = false;
+
+	//Banco de Jaimie guardado
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+	{
+		animacionBJ ^= true;
+		recorridoBJ1 = true;
+	}
+
+	//Banco de Jaimie de regreso a la cuna
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+	{
+		animacionBJR ^= true;
+		recorridoBJR1 = true;
+	}
+
+	//Mover muebles del cuarto de malcolm
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+	{
+		animacionCM ^= true;
+		recorridoM1 = true;
+	}
+
+	//Mover muebles del cuarto de malcolm
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+	{
+		animacionCMR ^= true;
+		recorridoCR1 = true;
+	}
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
