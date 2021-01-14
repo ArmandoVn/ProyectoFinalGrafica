@@ -64,6 +64,13 @@ void sound();
 //float y = 0.0f;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
+		movBanJx = 0.0f,
+		movBanJz = 0.0f,
+		movCama1 = 0.0f,
+		movCama2 = 0.0f,
+		movMueble1 = 0.0f,
+		movMueble2 = 0.0f,
+		movMueble3 = 0.0f,
 		orienta = 180.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -71,7 +78,25 @@ bool	animacion = false,
 		recorrido3 = false,
 		recorrido4 = false,
 		recorrido5 = false,
-		recorrido6 = false;
+		recorrido6 = false,
+		recorridoBJ1 = false,
+		recorridoBJ2 = false,
+		animacionBJ = false,
+		recorridoBJR1 = false,
+		recorridoBJR2 = false,
+		animacionBJR = false,
+		animacionCM = false,
+		recorridoM1 = false,
+		recorridoM2 = false,
+		recorridoC1 = false,
+		recorridoC2 = false,
+		recorridoM3 = false,
+		animacionCMR = false,
+		recorridoMR1 = false,
+		recorridoMR2 = false,
+		recorridoCR1 = false,
+		recorridoCR2 = false,
+		recorridoMR3 = false;
 
 
 //Keyframes (Manipulación y dibujo)
@@ -187,7 +212,7 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
-
+	
 	//Vehículo
 	if (animacion)
 	{
@@ -254,7 +279,180 @@ void animate(void)
 			}
 		}
 	}
+
+
+	//Animación Banco de Jaimie
+	if (animacionBJ)//x = 14.0f, z=-24.5f
+	{
+		if (recorridoBJ1)
+		{
+			movBanJz += 1.0f;
+			if (movBanJz > 20.0f)
+			{
+				recorridoBJ1 = false;
+				recorridoBJ2 = true;
+				
+			}
+		}
+
+		if (recorridoBJ2)
+		{
+			movBanJx += 1.0f;
+			if (movBanJx > 13.0f)
+			{
+				recorridoBJ2 = false;
+			}
+
+		}
+	}
+	//Animación Banco de Jaimie Regreso a la Cuna
+	if (animacionBJR)//x = 14.0f, z=-24.5f
+	{
+		if (recorridoBJR1)
+		{
+			movBanJx -= 1.0f;
+			if (movBanJx < 0.0f)
+			{
+				recorridoBJR1 = false;
+				recorridoBJR2 = true;
+
+			}
+		}
+
+		if (recorridoBJR2)
+		{
+			movBanJz -= 1.0f;
+			if (movBanJz < 0.0f)
+			{
+				recorridoBJR2 = false;
+			}
+
+		}
+	}
+
+	//Animación de mover los muebles
+	if (animacionCM)
+	{
+		if (recorridoM1)
+		{
+			movMueble1 -= 1.0f;
+			if (movMueble1 < -40.0f)
+			{
+				recorridoM1 = false;
+				recorridoC1 = true;
+
+			}
+		}
+
+		if (recorridoC1)
+		{
+			movCama1 -= 1.0f;
+			if (movCama1 < -37.0f)
+			{
+				recorridoC1 = false;
+				recorridoM2 = true;
+			}
+
+		}
+
+		if (recorridoM2)
+		{
+			movMueble2 -= 1.0f;
+			if (movMueble2 < -40.0f)
+			{
+				recorridoM2 = false;
+				recorridoC2 = true;
+
+			}
+		}
+
+		if (recorridoC2)
+		{
+			movCama2 -= 1.0f;
+			if (movCama2 < -37.0f)
+			{
+				recorridoC2 = false;
+				recorridoM3 = true;
+				
+			}
+
+		}
+		if (recorridoM3)
+		{
+			movMueble3 += 1.0f;
+			if (movMueble3 > 25.0f)
+			{
+				recorridoM3 = false;
+				
+
+			}
+
+		}
+	}
+
+
+	//Animación de mover los muebles de regreso
+	if (animacionCMR)
+	{
+		if (recorridoMR1)
+		{
+			movMueble1 += 1.0f;
+			if (movMueble1 > 0.0f)
+			{
+				recorridoMR1 = false;
+				recorridoCR2 = true;
+
+			}
+		}
+
+		if (recorridoCR1)
+		{
+			movCama1 += 1.0f;
+			if (movCama1 > 0.0f)
+			{
+				recorridoCR1 = false;
+				recorridoMR1 = true;
+			}
+
+		}
+
+		if (recorridoMR2)
+		{
+			movMueble2 += 1.0f;
+			if (movMueble2 > 0.0f)
+			{
+				recorridoMR2 = false;
+				recorridoMR3 = true;
+
+			}
+		}
+
+		if (recorridoCR2)
+		{
+			movCama2 += 1.0f;
+			if (movCama2 > 0.0f)
+			{
+				recorridoCR2 = false;
+				recorridoMR2 = true;
+
+			}
+
+		}
+		if (recorridoMR3)
+		{
+			movMueble3 -= 1.0f;
+			if (movMueble3 < 0.0f)
+			{
+				recorridoMR3 = false;
+
+
+			}
+
+		}
+	}
 }
+
+
 
 int main()
 {
@@ -335,6 +533,7 @@ int main()
 	Model librero("resources/objects/Librero/librero.obj");
 	Model chimenea("resources/objects/Chimenea/chimenea1.obj");
 	Model sofa("resources/objects/Sofa/sofa.obj");
+	Model sofa1("resources/objects/Sofa1/sofa1.obj");
 	Model mesa("resources/objects/Mesa/mesa.obj");
 	Model cama("resources/objects/Cama/cama.obj");
 	Model cama2("resources/objects/Cama2/cama2.obj");
@@ -357,7 +556,8 @@ int main()
 	Model alacena("resources/objects/Alacena/alacena.obj");
 	Model refri("resources/objects/Refri/refri.obj");
 	Model mesaCocina("resources/objects/Mesa/mesa00.obj");
-	
+	Model estufa("resources/objects/Estufa/Estufa_LSVC.obj");
+	Model sink("resources/objects/Lavabo/Sink_LSVC.obj");
 	Model silla("resources/objects/Silla/silla.obj");
 	Model gabinete("resources/objects/Gabinetes/gabinete.obj");
 	Model gabinete2("resources/objects/Gabinetes/gabinete2.obj");
@@ -603,6 +803,27 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 60.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		// CAMA Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-80.0f, 0.1f, 5.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cama2.Draw(staticShader);
+
+		// Mueble Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-130.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
+
+		// Mueble2 Cuarto papás
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-30.0f, 0.1f, -30.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		staticShader.setMat4("model", model);
+		porteria.Draw(staticShader);
 		/*------------------ FIN RECAMARA PADRES ----------------------*/
 
 
@@ -735,14 +956,14 @@ int main()
 
 		// CAMA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f + movCama2));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama.Draw(staticShader);
 
 		// CAMA2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f + movCama1));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama2.Draw(staticShader);
@@ -764,7 +985,7 @@ int main()
 
 		// MUEBLEM
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-35.0f, 0.1f, 260.0f));
+		model = glm::translate(model, glm::vec3(-35.0f, 0.1f, 260.0f + movMueble3));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		mueblem.Draw(staticShader);
@@ -772,14 +993,14 @@ int main()
 
 		// Mueble1
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 295.0f));
+		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 295.0f + movMueble1));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		porteria.Draw(staticShader);
 
 		// Mueble2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 295.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 295.0f + movMueble2));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		mueble2.Draw(staticShader);
@@ -862,7 +1083,7 @@ int main()
 
 		// BANCO
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(14.0f, 0.0f, -24.5f));
+		model = glm::translate(model, glm::vec3(14.0f + movBanJx, 0.0f, -24.5f + movBanJz));//x = 14.0f, z=-24.5f
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
@@ -916,6 +1137,31 @@ int main()
 		model = glm::scale(model, glm::vec3(110.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		floor_house.Draw(staticShader);
+
+		//Sofá grande Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(240.0f, 0.6f, 320.f));
+		model = glm::scale(model, glm::vec3(1.3f, 0.8f, 1.3f));
+		staticShader.setMat4("model", model);
+		sofa.Draw(staticShader);
+
+		//Sofá grande Sala
+		
+		model = glm::translate(model, glm::vec3(-27.0f, 0.6f, 70.f));
+		//model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		sofa1.Draw(staticShader);
+
+		//Mesa Sala
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(190.0f, 0.6f, 340.f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 1.0f));
+		staticShader.setMat4("model", model);
+		mesa.Draw(staticShader);
+
+
+
 		/*----------------- FIN SALA --------------------*/
 
 
@@ -1003,7 +1249,7 @@ int main()
 
 		/*----------------- MODELOS COCINA --------------------*/
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.2f, 212.0f));
+		model = glm::translate(model, glm::vec3(100.0f, 0.2f, 214.0f));
 		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::scale(model, glm::vec3(0.18f, 0.25f, 0.18f));
 		staticShader.setMat4("model", model);
@@ -1078,16 +1324,32 @@ int main()
 		gabinete.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(72.0f, 1.0f, 210.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 4.5f, 4.0f));
+		model = glm::translate(model, glm::vec3(72.0f, 1.0f, 213.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 4.5f, 5.0f));
 		staticShader.setMat4("model", model);
 		gabinete2.Draw(staticShader);
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(244.0f, 1.0f, -103.0f));
-		model = glm::scale(model, glm::vec3(4.0f, 4.5f, 4.0f));
+		model = glm::scale(model, glm::vec3(4.85f, 4.5f, 5.0f));
 		staticShader.setMat4("model", model);
 		gabinete3.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-113.0f, 16.0f, -245.0f));
+		model = glm::scale(model, glm::vec3(0.45f, 1.5f, 0.7f));
+		staticShader.setMat4("model", model);
+		estufa.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(201.0f, 13.0f, -55.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		staticShader.setMat4("model", model);
+		sink.Draw(staticShader);
+
+
 		/*----------------- FIN COCINA/COMEDOR --------------------*/
 
 
@@ -1191,6 +1453,34 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	// Sound
 	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
 		soundon = false;
+
+	//Banco de Jaimie guardado
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+	{
+		animacionBJ ^= true;
+		recorridoBJ1 = true;
+	}
+
+	//Banco de Jaimie de regreso a la cuna
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+	{
+		animacionBJR ^= true;
+		recorridoBJR1 = true;
+	}
+
+	//Mover muebles del cuarto de malcolm
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+	{
+		animacionCM ^= true;
+		recorridoM1 = true;
+	}
+
+	//Mover muebles del cuarto de malcolm
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+	{
+		animacionCMR ^= true;
+		recorridoCR1 = true;
+	}
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
