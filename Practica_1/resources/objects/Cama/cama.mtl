@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 10.01.2021 17:59:44
+# File Created: 24.01.2021 16:07:37
 
-newmtl colcha
+newmtl Cama1
 	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
@@ -12,10 +12,10 @@ newmtl colcha
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka colcha.png
-	map_Kd colcha.png
+	map_Ka Rovere Chiaro.jpg
+	map_Kd Rovere Chiaro.jpg
 
-newmtl cama
+newmtl Sabana
 	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
@@ -26,5 +26,19 @@ newmtl cama
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka cama.jpg
-	map_Kd cama.jpg
+	map_Ka sabana.jpg
+	map_Kd sabana.jpg
+
+newmtl Almohada
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka almohada.png
+	map_Kd almohada.png

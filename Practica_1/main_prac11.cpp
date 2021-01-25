@@ -517,7 +517,7 @@ int main()
 	Model mueblem("resources/objects/MuebleM/mueblem.obj");
 	Model porteria("resources/objects/Porteria/porteriam.obj");
 	Model mueble2("resources/objects/Porteria/mueble2.obj");
-	Model roperom("resources/objects/RoperoM/roperom.obj");
+	Model roperom2("resources/objects/RoperoM2/roperoM2.obj");
 	Model cuna("resources/objects/Cuna/cuna.obj");
 	Model banco("resources/objects/Banco/banco.obj");
 	Model balon("resources/objects/Balon/balon.obj");
@@ -541,6 +541,14 @@ int main()
 	Model bottle("resources/objects/Glass/bottle.obj");
 	Model agua("resources/objects/Glass/water.obj");
 	Model mari("resources/objects/Mariposa/mariposa.obj");
+
+	Model mesanueva("resources/objects/MesaNueva/mesanueva.obj");
+	Model refriNuevo("resources/objects/RefriNuevo/refriNuevo.obj");
+	Model platos("resources/objects/Platos/platos.obj");
+	Model micro("resources/objects/Micro/micro.obj");
+	Model dvd("resources/objects/DVD/dvd.obj");
+	Model tv("resources/objects/TV/tv.obj");
+	Model mtv("resources/objects/MTV/mtv.obj");
 	/*---------------- MODELOS BAÑO ----------------*/
 	Model ducha("resources/objects/Bathroom/ducha.obj");
 	Model espejo("resources/objects/Bathroom/espejo.obj");
@@ -832,7 +840,7 @@ int main()
 
 		// CAMA Cuarto papás
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-80.0f, 0.1f, 5.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, 0.1f, 10.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 2.0f));
 		staticShader.setMat4("model", model);
 		cama2.Draw(staticShader);
@@ -919,7 +927,7 @@ int main()
 		lavabo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-147.0f, 0.0f, 159.5f));
+		model = glm::translate(model, glm::vec3(-144.0f, 0.0f, 159.5f));
 		model = glm::rotate(model, glm::radians(-270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
@@ -982,24 +990,39 @@ int main()
 
 		// CAMA
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.1f, 323.0f + movCama2));
+		model = glm::translate(model, glm::vec3(-145.0f, 0.1f, 338.0f + movCama2));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama.Draw(staticShader);
 
 		// CAMA2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-70.0f, 0.1f, 323.0f + movCama1));
+		model = glm::translate(model, glm::vec3(-95.0f, 0.1f, 328.0f + movCama1));
 		//model = glm::scale(model, glm::vec3(20.0f, 20.0f, 45.0f));
 		staticShader.setMat4("model", model);
 		cama2.Draw(staticShader);
 
-		// MESAM
+		// MTV
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-92.0f, 0.1f, 201.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(13.0f, 13.0f, 13.0f));
 		staticShader.setMat4("model", model);
-		mesam.Draw(staticShader);
+		mtv.Draw(staticShader);
+
+		// DVD
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-80.0f, 15.7f, 199.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		dvd.Draw(staticShader);
+
+		// TV
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-105.0f, 17.5f, 199.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		tv.Draw(staticShader);
+
 
 
 		// SILLAM
@@ -1033,10 +1056,10 @@ int main()
 
 		// ROPERO
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-143.0f, 0.1f, 125.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-145.0f, 0.1f, 120.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.7f, 0.5f));
 		staticShader.setMat4("model", model);
-		roperom.Draw(staticShader);
+		roperom2.Draw(staticShader);
 
 		/*----------------- FIN MALCOM --------------------*/
 
@@ -1274,12 +1297,16 @@ int main()
 		floor_house.Draw(staticShader);
 
 		/*----------------- MODELOS COCINA --------------------*/
+
+
+
+		//Refrigerador
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(100.0f, 0.2f, 214.0f));
 		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::scale(model, glm::vec3(0.18f, 0.25f, 0.18f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.90f, 1.0f));
 		staticShader.setMat4("model", model);
-		refri.Draw(staticShader);
+		refriNuevo.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
@@ -1288,12 +1315,21 @@ int main()
 		staticShader.setMat4("model", model);
 		alacena.Draw(staticShader);
 
+
+		//Microondas
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(203.5f, 20.5f, -80.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		staticShader.setMat4("model", model);
+		micro.Draw(staticShader);
 		/*model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-250.0f, 42.0f, 70.0f));
 		model = glm::scale(model, glm::vec3(0.4f));
 		staticShader.setMat4("model", model);
-		cereal.Draw(staticShader);*/
+		cereal.Draw(staticShader);
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-155.0f, 1.0f, 260.0f));
@@ -1341,7 +1377,50 @@ int main()
 		model = glm::translate(model, glm::vec3(-160.0f, 1.0f, 250.0f));
 		model = glm::scale(model, glm::vec3(0.42f,0.52f, 0.42f));
 		staticShader.setMat4("model", model);
-		mesaCocina.Draw(staticShader);
+		mesaCocina.Draw(staticShader);*/
+
+		//MesaNueva
+		model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-160.0f, 1.0f, 250.0f));
+		model = glm::scale(model, glm::vec3(0.42f, 0.40f, 0.42f));
+		staticShader.setMat4("model", model);
+		mesanueva.Draw(staticShader);
+
+		//platos
+		model = glm::mat4(1.0f);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(53.0f, 18.5f, 300.0f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		platos.Draw(staticShader);
+
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(40.0f, 18.5f, 289.0f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
+
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		platos.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(60.0f, 18.5f, 295.0f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
+
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		platos.Draw(staticShader);
+
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(47.0f, 18.5f, 283.0f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
+
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		platos.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(86.0f, 1.0f, 145.0f));
