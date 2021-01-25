@@ -519,7 +519,7 @@ int main()
 	Model porteria("resources/objects/Porteria/porteriam.obj");
 	Model mueble2("resources/objects/Porteria/mueble2.obj");
 	Model roperom("resources/objects/RoperoM/roperom.obj");
-	Model cuna("resources/objects/Cuna/cuna.obj");
+	
 	Model banco("resources/objects/Banco/banco.obj");
 	Model balon("resources/objects/Balon/balon.obj");
 	Model mueblej("resources/objects/MuebleJ/muebleJ.obj");
@@ -559,6 +559,12 @@ int main()
 	Model sillaSala("resources/objects/Kennedy/sillaSala.obj");
 	Model sillon("resources/objects/Kennedy/sillon.obj");
 	Model libreroS("resources/objects/Kennedy/librero.obj");
+	Model cuna("resources/objects/Kennedy/cuna.obj");
+	Model cambiador("resources/objects/Kennedy/cambiadorP.obj");
+	Model oso("resources/objects/Kennedy/oso.obj");
+	Model ropero("resources/objects/Kennedy/ropero.obj");
+	Model estufaJ("resources/objects/Kennedy/estufaJ.obj");
+
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
@@ -1113,6 +1119,17 @@ int main()
 		staticShader.setMat4("model", model);
 		cuna.Draw(staticShader);
 
+		// Cambiador
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(8.0f, -1.0f, -26.5f));
+		model = glm::scale(model, glm::vec3(1.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		cambiador.Draw(staticShader);
+		// Oso
+		model = glm::translate(model, glm::vec3(0.0f, 15.5f, 0.0f)); 
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		oso.Draw(staticShader);
 		// BANCO
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(14.0f + movBanJx, 0.0f, -24.5f + movBanJz));//x = 14.0f, z=-24.5f
@@ -1123,20 +1140,25 @@ int main()
 
 		// BALON
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(55.0f, 0.0f, 13.5f));
+		model = glm::translate(model, glm::vec3(33.0f, 31.0f, 40.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
 		balon.Draw(staticShader);
-
-		// MuebleJ
+		//Ropero
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(20.0f, 0.0f, 23.5f));
+		model = glm::translate(model, glm::vec3(28.0f, 0.0f, 38.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		staticShader.setMat4("model", model);
-		mueblej.Draw(staticShader);
-
+		ropero.Draw(staticShader);
+		//Estufa juguete
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(45.0f, 0.0f, 13.5f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		staticShader.setMat4("model", model);
+		estufaJ.Draw(staticShader);
 
 
 		/*----------------- CUARTO SALA --------------------*/
