@@ -564,7 +564,7 @@ int main()
 	Model oso("resources/objects/Kennedy/oso.obj");
 	Model ropero("resources/objects/Kennedy/ropero.obj");
 	Model estufaJ("resources/objects/Kennedy/estufaJ.obj");
-
+	Model techo("resources/objects/Kennedy/techo.obj");
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
@@ -796,7 +796,16 @@ int main()
 		staticShader.setMat4("model", model);
 		bodega.Draw(staticShader);
 
-
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-55.0f, 52.0f, 220.0f));//-,+,+
+		model = glm::scale(model, glm::vec3(1.5f,1.9f,4.3f));
+		staticShader.setMat4("model", model);
+		techo.Draw(staticShader);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(145.0f, 52.0f, 330.0f));//+,+,+
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		techo.Draw(staticShader);
 		/*------------------ RECAMARA PADRES ----------------------*/
 		// PARED CAMA PAPAS
 		model = glm::mat4(1.0f);
