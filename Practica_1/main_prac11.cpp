@@ -1360,12 +1360,6 @@ int main()
 		staticShader.setMat4("model", model);
 		alacena.Draw(staticShader);
 
-		/*model = glm::mat4(1.0f);
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(-250.0f, 42.0f, 70.0f));
-		model = glm::scale(model, glm::vec3(0.4f));
-		staticShader.setMat4("model", model);
-		cereal.Draw(staticShader);*/
 		model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0));
 		model = glm::translate(model, glm::vec3(-155.0f, 1.0f, 260.0f));
